@@ -17,14 +17,15 @@ public class Bot {
             jda.addEventListener(new MessageListener());
 
             jda.awaitReady();
-
-            jda.getGuilds()
-                    .get(0).getTextChannelsByName("minecraft-server-chat", true)
-                    .get(0).sendMessage("Online").complete();
-            System.out.println(jda.getSelfUser().getId());
         } catch (LoginException | InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public void sendMessage(String message) {
+        jda.getGuilds()
+                .get(0).getTextChannelsByName("minecraft-server-chat", true)
+                .get(0).sendMessage(message).complete();
     }
 
     public void shutdown() {
