@@ -13,7 +13,7 @@ public class MessageListener extends ListenerAdapter {
     {
         if (event.getTextChannel().getName().equals(CHANNEL_NAME) && !event.getAuthor().isBot()) {
             Bukkit.getServer().broadcastMessage
-                    (String.format("[" + ChatColor.BLUE + "%s" + ChatColor.RESET + "] %s",
+                    (String.format("<" + ChatColor.BLUE + "%s" + ChatColor.RESET + "> %s",
                             event.getAuthor().getAsTag(),
                             event.getMessage().getContentDisplay()
                     ));
