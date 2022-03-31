@@ -1,5 +1,6 @@
 package de.epsdev.minecord.bot;
 
+import de.epsdev.minecord.Minecord;
 import discord4j.common.util.Snowflake;
 import discord4j.core.DiscordClient;
 import discord4j.core.GatewayDiscordClient;
@@ -15,15 +16,16 @@ import org.bukkit.ChatColor;
 import java.util.List;
 
 public class Bot {
-    private final String discordToken;
     private final DiscordClient discordClient;
     private final GatewayDiscordClient gateway;
-    private final String CHANNEL_NAME = "minecraft-server-chat";
+    private final String CHANNEL_NAME;
+    private final String DISCORD_TOKEN;
 
     public Bot() {
-        discordToken = System.getenv("discordtoken");
+        DISCORD_TOKEN = Minecord.pluginConfig.getDiscordToken();
+        CHANNEL_NAME = Minecord.pluginConfig.getChannelName();
 
-        discordClient = DiscordClient.create(discordToken);
+        discordClient = DiscordClient.create(DISCORD_TOKEN);
         gateway = discordClient.login().block();
 
         initializeMessageListener();
