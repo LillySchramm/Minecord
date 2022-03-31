@@ -1,0 +1,14 @@
+stages:
+    - build
+
+maven_package:
+    image: maven:3.8.4-eclipse-temurin-16
+    stage: build
+    artifacts:
+      untracked: false
+      expire_in: 7 days
+      paths:
+        - target/
+    script:
+        - ls
+        - mvn clean package
