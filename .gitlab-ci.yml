@@ -16,5 +16,8 @@ maven_package:
 publish_to_github:
     image: registry01.eps-dev.de/gitlab/releaseassistant/main
     stage: publish
+    needs:
+      - maven_package
     script:
-        - ls /
+        - mv target/minecord-*.jar ./
+        - python /main.py
