@@ -12,6 +12,6 @@ public class e_OnPlayerChat implements Listener {
         Player player = e.getPlayer();
         String message = e.getMessage();
 
-        Minecord.bot.sendMessage(String.format("> <%s> %s", player.getDisplayName(), message));
+        Minecord.bot.sendMessage(String.format("<%s> %s", player.getDisplayName(), message));
     }
 }
