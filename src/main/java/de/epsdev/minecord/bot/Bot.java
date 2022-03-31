@@ -77,6 +77,6 @@ public class Bot {
     }
 
     public void shutdown() {
-        gateway.logout();
+        gateway.logout().block();
     }
 }
