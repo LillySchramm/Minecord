@@ -1,34 +1,80 @@
 package de.epsdev.minecord.bot;
 
-import net.dv8tion.jda.api.JDA;
-import net.dv8tion.jda.api.JDABuilder;
+import discord4j.common.util.Snowflake;
+import discord4j.core.DiscordClient;
+import discord4j.core.GatewayDiscordClient;
+import discord4j.core.event.domain.message.MessageCreateEvent;
+import discord4j.core.object.entity.Guild;
+import discord4j.core.object.entity.Message;
+import discord4j.core.object.entity.channel.GuildMessageChannel;
+import discord4j.core.spec.MessageCreateSpec;
+import discord4j.rest.entity.RestChannel;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 
-import javax.security.auth.login.LoginException;
+import java.util.List;
 
 public class Bot {
-    private String discordToken;
-    private JDA jda;
+    private final String discordToken;
+    private final DiscordClient discordClient;
+    private final GatewayDiscordClient gateway;
+    private final String CHANNEL_NAME = "minecraft-server-chat";
 
     public Bot() {
         discordToken = System.getenv("discordtoken");
 
-        try {
-            jda = JDABuilder.createDefault(discordToken).build();
-            jda.addEventListener(new MessageListener());
+        discordClient = DiscordClient.create(discordToken);
+        gateway = discordClient.login().block();
 
-            jda.awaitReady();
-        } catch (LoginException | InterruptedException e) {
-            e.printStackTrace();
-        }
+        initializeMessageListener();
+    }
+
+    private String getChannelNameFromMessage(Message message) {
+        Snowflake channelId = message.getChannelId();
+        RestChannel restChannel = gateway.getChannelById(channelId).block().getRestChannel();
+
+        return restChannel.getData().block().name().get();
+    }
+
+    private void initializeMessageListener() {
+        gateway.on(MessageCreateEvent.class).subscribe(event -> {
+            Message message = event.getMessage();
+            String channelName = getChannelNameFromMessage(message);
+
+            boolean isRealUser = message.getUserData().bot().isAbsent();
+
+            if (channelName.equals(CHANNEL_NAME) && isRealUser) {
+                Bukkit.getServer().broadcastMessage
+                    (String.format("<" + ChatColor.BLUE + "%s" + ChatColor.RESET + "> %s",
+                        message.getAuthorAsMember().block().getTag(),
+                        message.getContent()
+                    ));
+            }
+        });
+    }
+
+    private List<Guild> getGuilds() {
+        return gateway.getGuilds().collectList().block();
+    }
+
+    private GuildMessageChannel getTextChannelFromGuildByName(Guild guild, String name) {
+       return guild.getChannels().ofType(GuildMessageChannel.class)
+               .filter((channel) -> channel.getName().equals(name)).blockFirst();
     }
 
     public void sendMessage(String message) {
-        jda.getGuilds()
-                .get(0).getTextChannelsByName("minecraft-server-chat", true)
-                .get(0).sendMessage(message).complete();
+        Guild guild = getGuilds().get(0);
+        GuildMessageChannel messageChannel = getTextChannelFromGuildByName(guild, CHANNEL_NAME);
+
+        messageChannel.createMessage(
+            MessageCreateSpec.
+                builder().
+                content(message).
+                build()
+        ).block();
     }
 
     public void shutdown() {
-        jda.shutdownNow();
+        gateway.logout();
     }
 }
