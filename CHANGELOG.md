@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.1
+
+### Added
+
+- Added cache for discord channel names.
+- Added cache for discord usernames.
+- Added cache for guilds.
+- Added cache for message channels.
+
 ## 0.1.0
 
 ### Added
