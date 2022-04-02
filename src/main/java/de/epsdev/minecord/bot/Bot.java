@@ -6,6 +6,7 @@ import discord4j.core.DiscordClient;
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.message.MessageCreateEvent;
 import discord4j.core.object.entity.Guild;
+import discord4j.core.object.entity.Member;
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.channel.GuildMessageChannel;
 import discord4j.core.spec.MessageCreateSpec;
@@ -43,7 +44,11 @@ public class Bot {
         String tag = userTagCache.getOrDefault(userId, null);
 
         if (tag == null) {
-            tag = message.getAuthorAsMember().block().getTag();
+            Member member = message.getAuthorAsMember().block();
+            if (member == null)
+                return null;
+
+            tag = member.getTag();
 
             userTagCache.put(userId, tag);
         }
@@ -79,7 +84,7 @@ public class Bot {
 
             boolean isRealUser = message.getUserData().bot().isAbsent();
 
-            if (channelName.equals(CHANNEL_NAME) && isRealUser) {
+            if (channelName.equals(CHANNEL_NAME) && isRealUser && userTag != null) {
                 Bukkit.getServer().broadcastMessage
                     (String.format("<" + ChatColor.BLUE + "%s" + ChatColor.RESET + "> %s",
                         userTag,
