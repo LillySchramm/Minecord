@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.0
+
+### Added
+
+- Added a version check that warns the user when the installed version got outdated. 
+
+### Fixed
+
+- Fixed a bot timeout.
+
 ## 0.1.2
 
 ### Added
