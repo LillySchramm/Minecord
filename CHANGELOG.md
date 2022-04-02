@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2
+
+### Added
+
+- Added the `/clearDiscordBotCache` command. Requires the `minecord.clearDiscordBotCache` permission.
+
 ## 0.1.1
 
 ### Added

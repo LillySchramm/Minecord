@@ -1,6 +1,7 @@
 package de.epsdev.minecord;
 
 import de.epsdev.minecord.bot.Bot;
+import de.epsdev.minecord.commands.c_ClearDiscordBotCache;
 import de.epsdev.minecord.config.PluginConfig;
 import de.epsdev.minecord.events.e_OnPlayerChat;
 import org.bukkit.plugin.PluginManager;
@@ -21,11 +22,16 @@ public final class Minecord extends JavaPlugin {
         bot = new Bot();
 
         registerEvents();
+        registerCommands();
     }
 
     private void registerEvents(){
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new e_OnPlayerChat(), this);
+    }
+
+    private void registerCommands(){
+        getCommand("clearDiscordBotCache").setExecutor(new c_ClearDiscordBotCache());
     }
 
     @Override

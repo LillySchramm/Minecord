@@ -122,6 +122,13 @@ public class Bot {
         ).block();
     }
 
+    public void clearCache() {
+        activeGuildMessageChannel = null;
+        guildCache = null;
+        userTagCache.clear();
+        channelNameCache.clear();
+    }
+
     public void shutdown() {
         gateway.logout().block();
     }
