@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.0
+
+### Added
+
+- The bot now displays the servers' player count.
+
 ## 0.2.0
 
 ### Added

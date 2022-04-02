@@ -1,6 +1,7 @@
 package de.epsdev.minecord.bot;
 
 import de.epsdev.minecord.Minecord;
+import discord4j.common.store.action.gateway.PresenceUpdateAction;
 import discord4j.common.util.Snowflake;
 import discord4j.core.DiscordClient;
 import discord4j.core.GatewayDiscordClient;
@@ -9,6 +10,9 @@ import discord4j.core.object.entity.Guild;
 import discord4j.core.object.entity.Member;
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.channel.GuildMessageChannel;
+import discord4j.core.object.presence.ClientActivity;
+import discord4j.core.object.presence.ClientPresence;
+import discord4j.core.object.presence.Presence;
 import discord4j.core.spec.MessageCreateSpec;
 import discord4j.discordjson.Id;
 import discord4j.rest.entity.RestChannel;
@@ -132,6 +136,15 @@ public class Bot {
         guildCache = null;
         userTagCache.clear();
         channelNameCache.clear();
+    }
+
+    public void updatePlayerCount() {
+        int maxPlayers = Bukkit.getMaxPlayers();
+        int currentPlayers = Bukkit.getOnlinePlayers().size();
+
+        ClientPresence clientPresence =  ClientPresence.online(
+                ClientActivity.playing(String.format("%s / %s currently online.", currentPlayers, maxPlayers)));
+        gateway.updatePresence(clientPresence).block();
     }
 
     public void shutdown() {

@@ -6,11 +6,11 @@ import de.epsdev.minecord.config.PluginConfig;
 import de.epsdev.minecord.events.e_OnPlayerChat;
 import de.epsdev.minecord.events.e_OnPlayerJoin;
 import de.epsdev.minecord.version.Version;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public final class Minecord extends JavaPlugin {
@@ -32,6 +32,12 @@ public final class Minecord extends JavaPlugin {
         registerCommands();
 
         Version.checkVersion();
+
+        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(
+                this,
+                () -> bot.updatePlayerCount(),
+                0L,
+                20L * 30);
     }
 
     private void registerEvents(){
