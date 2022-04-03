@@ -8,7 +8,7 @@ A Spigot Plugin that connects your server chat with a discord channel.
 ![img](https://github.com/EliasSchramm/Minecord/blob/main/docs/img.png?raw=true)
 - Displays the current player count.<br>
 ![img](https://github.com/EliasSchramm/Minecord/blob/main/docs/img2.png?raw=true)
-
+- Link your in-game username to your discord account.
 
 ## Requirements
 
@@ -49,3 +49,5 @@ Just replace the minecord-x.x.x.jar file with the [latest one](https://github.co
 ## Commands
 
 - `/clearDiscordBotCache` Clears the Discord bot cache. Intended to be used in case of some odd desyncs.
+- `/linkDiscord` Link your discord account to your minecraft name.
+- `/unlinkDiscord` Remove the link to your discord account.
