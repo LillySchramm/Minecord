@@ -26,7 +26,6 @@ public class e_OnPlayerJoin implements Listener {
                 currentVersion,
                 Version.getLatestVersion()
         ));
-
         message.setColor(ChatColor.GOLD);
 
         TextComponent link = new TextComponent("here");

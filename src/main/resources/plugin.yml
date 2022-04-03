@@ -10,3 +10,9 @@ commands:
     description: Clears the Discord bot cache. Intended to be used in case of some odd desyncs.
     usage: /<command>
     permission: minecord.clearDiscordBotCache
+  linkDiscord:
+    description: Link your discord account to your minecraft name.
+    usage: /<command>
+  unlinkDiscord:
+    description: Remove the link to your discord account.
+    usage: /<command>
