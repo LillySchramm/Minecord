@@ -4,11 +4,9 @@ A Spigot Plugin that connects your server chat with a discord channel.
 
 ## Features
 
-- Connects your in game chat with a channel on your discord server.
-<br>
+- Connects your in game chat with a channel on your discord server.<br>
 ![img](https://github.com/EliasSchramm/Minecord/blob/main/docs/img.png?raw=true)
-- Displays the current player count.
-<br>
+- Displays the current player count.<br>
 ![img](https://github.com/EliasSchramm/Minecord/blob/main/docs/img2.png?raw=true)
 
 
