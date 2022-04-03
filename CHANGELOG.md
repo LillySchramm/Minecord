@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.0
+
+### Added
+
+- Added the ability to link a discord account to your username.
+- Added the `/linkDiscord` command.
+- Added the `/unlinkDiscord` command.
+
 ## 0.3.0
 
 ### Added
