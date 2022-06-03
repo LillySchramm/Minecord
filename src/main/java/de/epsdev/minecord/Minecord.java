@@ -40,11 +40,13 @@ public final class Minecord extends JavaPlugin {
         Version.checkVersion();
         NameLink.load();
 
-        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(
-                this,
-                () -> bot.updatePlayerCount(),
-                0L,
-                20L * 30);
+        if (pluginConfig.getEnablePlayerCount()) {
+            Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(
+                    this,
+                    () -> bot.updatePlayerCount(),
+                    0L,
+                    20L * 30);
+        }
     }
 
     private void registerEvents(){
