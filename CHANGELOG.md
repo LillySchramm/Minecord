@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.1
+
+### Added
+
+- Added a config option that allows to toggle the player count display.
+
 ## 0.4.0
 
 ### Added
