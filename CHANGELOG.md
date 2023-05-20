@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.2
+
+### Updated
+
+- Updated the GitHub links used for update checking.
+
 ## 0.4.1
 
 ### Added

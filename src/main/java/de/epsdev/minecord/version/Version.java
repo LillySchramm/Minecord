@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.logging.Level;
 
 public class Version {
-    private final static String VERSION_URL = "https://api.github.com/repos/EliasSchramm/Minecord/releases/latest";
+    private final static String VERSION_URL = "https://api.github.com/repos/LillySchramm/Minecord/releases/latest";
     private static String latestVersion = "";
 
     private static String get(String urlToRequest) throws IOException {
@@ -62,7 +62,7 @@ public class Version {
                 Level.WARNING,
                 String.format("Minecord v%s is outdated! " +
                                 "Download the latest version (v%s) here: " +
-                                "https://github.com/EliasSchramm/Minecord/releases/latest",
+                                "https://github.com/LillySchramm/Minecord/releases/latest",
                         currentVersion,
                         getLatestVersion()
                 ));

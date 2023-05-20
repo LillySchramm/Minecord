@@ -33,7 +33,7 @@ public class e_OnPlayerJoin implements Listener {
         link.setUnderlined(true);
         link.setColor(ChatColor.RED);
         link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL,
-                "https://github.com/EliasSchramm/Minecord/releases/latest"));
+                "https://github.com/LillySchramm/Minecord/releases/latest"));
 
         message.addExtra(link);
 
