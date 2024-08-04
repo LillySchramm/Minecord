@@ -16,8 +16,8 @@ import discord4j.core.object.presence.ClientPresence;
 import discord4j.core.spec.MessageCreateSpec;
 import discord4j.discordjson.Id;
 import discord4j.rest.entity.RestChannel;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 
 import java.util.HashMap;
 import java.util.List;

@@ -2,7 +2,7 @@ name: Minecord
 version: '${project.version}'
 main: de.epsdev.minecord.Minecord
 api-version: 1.18
-authors: [ EliasSchramm ]
+authors: [ LillySchramm ]
 description: Connects your server chat with a discord channel.
 website: https://gitlab.eps-dev.de/Elias/minecrod.git
 commands:
