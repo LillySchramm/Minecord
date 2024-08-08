@@ -1,0 +1,22 @@
+services:
+  mc:
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    image: itzg/minecraft-server
+    environment:
+      SERVER_NAME: "Test Server"
+      ICON: "https://static-cdn.jtvnw.net/jtv_user_pictures/b2da1a64-f261-4eef-bf37-8117c50a7854-profile_image-70x70.png"
+      EULA: "true"
+      TYPE: "PAPER"
+      MEMORY: "2G"
+      VERSION: "1.21"
+      DIFFICULTY: "normal"
+      OVERRIDE_OPS: "true"
+      OPS: |
+        Lillychan_
+      #PLUGINS: |
+    ports:
+      - "25565:25565"
+      - "19132:19132/udp"
+    volumes:
+      - ./server:/data
