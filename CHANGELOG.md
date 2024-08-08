@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.0.0
+
+### Updated
+
+- Support for Minecraft version 1.21.
+
+### Fixed
+
+- Fixed an issue which caused the plugin to crash on startup.
+
+### Breaking
+
+- Changed the config format.
+- `/clearDiscordBotCache` Command was removed.
+
 ## 0.4.2
 
 ### Updated

@@ -121,13 +121,15 @@ public class Bot extends ListenerAdapter {
 
         if (!message.getChannelId().equals(CHANNEL_ID)) return;
 
+        var textMessage = ChatColor.stripColor(message.getContentDisplay());
+        if (textMessage.isEmpty()) return;
+
         var name = NameLink.getLink(userTag);
         userTag = name == null ? userTag : name;
 
-
         Bukkit.getServer().broadcastMessage
             (String.format("<" + ChatColor.BLUE +  (name == null ? "" : ChatColor.BOLD)  + "%s" + ChatColor.RESET + "> %s", userTag,
-                message.getContentDisplay()
+                    textMessage
             ));
     }
 }

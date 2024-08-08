@@ -15,7 +15,7 @@ public class e_OnPlayerJoin implements Listener {
     void onPlayerJoin(PlayerJoinEvent e){
         Player player = e.getPlayer();
 
-        if (Version.isUpToDate() || true) {
+        if (Version.isUpToDate() || !player.isOp()) {
             return;
         }
 
