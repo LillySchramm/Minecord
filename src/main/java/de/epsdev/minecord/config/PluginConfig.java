@@ -17,7 +17,7 @@ public class PluginConfig {
 
     private void setDefaults() {
         fileConfiguration.addDefault("discord_token", "aToken");
-        fileConfiguration.addDefault("channel_name", "minecraft-server-chat");
+        fileConfiguration.addDefault("channel_id", "chatId");
         fileConfiguration.addDefault("enable_player_count", true);
 
         fileConfiguration.options().copyDefaults(true);
@@ -28,8 +28,8 @@ public class PluginConfig {
         return fileConfiguration.getString("discord_token");
     }
 
-    public String getChannelName() {
-        return fileConfiguration.getString("channel_name");
+    public String getChannelId() {
+        return fileConfiguration.getString("channel_id");
     }
 
     public Boolean getEnablePlayerCount() {

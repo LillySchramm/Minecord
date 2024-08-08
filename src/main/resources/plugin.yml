@@ -1,15 +1,11 @@
 name: Minecord
 version: '${project.version}'
 main: de.epsdev.minecord.Minecord
-api-version: 1.18
+api-version: 1.21
 authors: [ LillySchramm ]
 description: Connects your server chat with a discord channel.
 website: https://gitlab.eps-dev.de/Lilly/minecrod.git
 commands:
-  clearDiscordBotCache:
-    description: Clears the Discord bot cache. Intended to be used in case of some odd desyncs.
-    usage: /<command>
-    permission: minecord.clearDiscordBotCache
   linkDiscord:
     description: Link your discord account to your minecraft name.
     usage: /<command>

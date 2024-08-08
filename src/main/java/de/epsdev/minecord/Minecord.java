@@ -1,8 +1,7 @@
 package de.epsdev.minecord;
 
-import de.epsdev.minecord.bot.Bot;
 import de.epsdev.minecord.bot.NameLink;
-import de.epsdev.minecord.commands.c_ClearDiscordBotCache;
+import de.epsdev.minecord.bot.Bot;
 import de.epsdev.minecord.commands.c_LinkDiscord;
 import de.epsdev.minecord.commands.c_UnlinkDiscord;
 import de.epsdev.minecord.config.PluginConfig;
@@ -45,7 +44,7 @@ public final class Minecord extends JavaPlugin {
                     this,
                     () -> bot.updatePlayerCount(),
                     0L,
-                    20L * 30);
+                    20L * 2);
         }
     }
 
@@ -56,7 +55,6 @@ public final class Minecord extends JavaPlugin {
     }
 
     private void registerCommands(){
-        getCommand("clearDiscordBotCache").setExecutor(new c_ClearDiscordBotCache());
         getCommand("linkDiscord").setExecutor(new c_LinkDiscord());
         getCommand("unlinkDiscord").setExecutor(new c_UnlinkDiscord());
     }
